@@ -32,7 +32,11 @@ public class LinearEquationRunner {
         int yTwo = Integer.parseInt(yOneString2);
 
         LinearEquation oneOne = new LinearEquation(xOne, yOne, xTwo, yTwo);
-        System.out.print(oneOne.distance());
+        System.out.println(oneOne.distance());
+        System.out.println(oneOne.yIntercept());
+        System.out.println(oneOne.equation());
+        System.out.print(oneOne.coordinateForX(1));
+
 
     }
 }

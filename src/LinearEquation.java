@@ -27,9 +27,12 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
     }
 
 
+
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept(){
+        double yIntercept1 = roundedToHundredth((y2) - (slope() * x2));
+        return yIntercept1;
 
     }
 
@@ -37,7 +40,8 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double slope(){
-        return 0;
+        double slope1 = (double)(y2 - y1) / (x2 - x1);
+        return slope1;
     }
 
 
@@ -66,14 +70,41 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
                subtraction!
      */
     public String equation(){
-        return "";
+        String slopeAsFraction = "";
+        String stringYIntercept = "";
+
+        int numerator = (y2 - y1);
+        int denominator = (x2 - x1);
+
+        if(yIntercept() > 0) {
+            stringYIntercept = "+ " + yIntercept();
+        } else if(yIntercept() < 0) {
+            stringYIntercept = "- " + (Math.abs(yIntercept()));
+        } else if (yIntercept() == 0) {
+            stringYIntercept = "";
+        }
+
+        if(numerator % denominator == 0) {
+            slopeAsFraction += (numerator / denominator);
+        } else if (numerator < 0 && denominator < 0){
+            slopeAsFraction = ((Math.abs(numerator)) + "/" + (Math.abs(denominator)));
+        } else {
+            slopeAsFraction = numerator + "/" + denominator;
+        }
+
+
+        String equation = ("y = " + slopeAsFraction + "x " + stringYIntercept);
+        return equation;
+
     }
 
 
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue){
-        return "";
+        double newY = roundedToHundredth((slope() * xValue ) + yIntercept());
+        String coordinatePair = ("(" + xValue + ", " + newY + ")");
+        return coordinatePair;
     }
 
 
@@ -83,7 +114,8 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
         HINT:  the Math.round method can help with this!
      */
     public double roundedToHundredth(double toRound){
-        return 0;
+        double toHundredth = ((toRound * 100)) / (double) 100;
+        return toHundredth;
     }
 
 
