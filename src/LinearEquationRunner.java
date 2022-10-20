@@ -5,6 +5,8 @@ public class LinearEquationRunner {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        System.out.println("Welcome to the Linear Equation Calculator!");
+
         //x and y of first coord
         System.out.print("Enter a coordinate please: ");
         String coordinateOne = scan.nextLine();
@@ -32,11 +34,16 @@ public class LinearEquationRunner {
         int yTwo = Integer.parseInt(yOneString2);
 
         LinearEquation oneOne = new LinearEquation(xOne, yOne, xTwo, yTwo);
-        System.out.println(oneOne.distance());
-        System.out.println(oneOne.yIntercept());
-        System.out.println(oneOne.equation());
-        System.out.print(oneOne.coordinateForX(1));
 
+        System.out.println(oneOne.lineInfo());
+
+        if(xOne != xTwo) {
+            System.out.print("Enter a value for x: ");
+            double xValue = scan.nextDouble();
+            System.out.print("The coordinate is: " + oneOne.coordinateForX(xValue));
+        }
+
+        scan.close();
 
     }
 }
