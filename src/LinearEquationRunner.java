@@ -6,6 +6,7 @@ public class LinearEquationRunner {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Welcome to the Linear Equation Calculator!");
+        System.out.println("-------------------");
 
         //x and y of first coord
         System.out.print("Enter a coordinate please: ");
@@ -36,6 +37,8 @@ public class LinearEquationRunner {
         LinearEquation oneOne = new LinearEquation(xOne, yOne, xTwo, yTwo);
 
         System.out.println(oneOne.lineInfo());
+
+        System.out.println("-------------------");
 
         if(xOne != xTwo) {
             System.out.print("Enter a value for x: ");

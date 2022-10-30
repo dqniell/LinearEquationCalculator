@@ -132,7 +132,7 @@ public class LinearEquation {
     public String lineInfo() {
         String info = "";
         if(x1 - x2 == 0) {
-            info += "This is on a vertical line";
+            info += "This is on a vertical line: x = " + x1;
         } else {
             info += ("The original points are: " + "(" + x1 + ", " + y1 + ")" + " and " + "(" + x2 + ", " + y2 + ")");
             info += "\nThe equation of the line is: " + equation();
