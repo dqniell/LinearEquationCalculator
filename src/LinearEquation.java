@@ -28,7 +28,7 @@ public class LinearEquation {
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept() {
-        double yIntercept1 = roundedToHundredth((y2) - (slope() * x2));
+        double yIntercept1 = roundedToHundredth(y2 - (slope() * x2));
         return yIntercept1;
 
     }
@@ -69,9 +69,10 @@ public class LinearEquation {
     public String equation() {
         String slopeAsFraction = "";
         String stringYIntercept = "";
+        String equation = "";
 
-        int numerator = (y2 - y1);
-        int denominator = (x2 - x1);
+        int numerator = (y2) - (y1);
+        int denominator = (x2) - (x1);
 
 
         if (yIntercept() > 0) {
@@ -82,16 +83,28 @@ public class LinearEquation {
             stringYIntercept = "";
         }
 
-        if (numerator % denominator == 0) {
+        if((double) numerator / denominator == 1) {
+            slopeAsFraction = "";
+        } else if ((double) numerator / denominator == (-1)) {
+            slopeAsFraction = "-";
+        } else if (numerator % denominator == 0) {
             slopeAsFraction += (numerator / denominator);
         } else if (numerator < 0 && denominator < 0) {
             slopeAsFraction = ((Math.abs(numerator)) + "/" + (Math.abs(denominator)));
-        } else {
-            slopeAsFraction = numerator + "/" + denominator;
+        } else if (numerator < 0 || denominator < 0){
+            slopeAsFraction = "-" + (Math.abs(numerator)) + "/" + (Math.abs(denominator));
+
         }
 
 
-        String equation = ("y = " + slopeAsFraction + "x " + stringYIntercept);
+        if((numerator == 0 || denominator == 0) && yIntercept() > 0) {
+            equation += "y = " + stringYIntercept.substring(2);
+        } else if ((numerator == 0 || denominator == 0) && yIntercept() < 0) {
+            equation += "y = " + stringYIntercept;
+        } else {
+            equation += ("y = " + slopeAsFraction + "x " + stringYIntercept);
+
+        }
         return equation;
 
     }
